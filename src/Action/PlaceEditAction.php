@@ -6,7 +6,7 @@ use App\Domain\Service\PlaceService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-final class PlaceCreateAction
+final class PlaceEditAction
 {
     // Reference image saving path
     private $directory = __DIR__ . '/../../public/images';
@@ -14,6 +14,11 @@ final class PlaceCreateAction
     private $placeService;
 
 
+    /**
+     * The constructor.
+     *
+     * @param PlaceService $placeService The Service
+     */
     public function __construct(PlaceService $placeService)
     {
         $this->placeService = $placeService;
@@ -25,10 +30,10 @@ final class PlaceCreateAction
         $data = (array)$request->getParsedBody();
 
         //Ensuring all required fields are filled
-        $result = array_diff(['name','slug','city','state'], array_keys($data));
+        $result = array_diff(['id','name','slug','city','state'], array_keys($data));
         if (count($result) > 0) {
             // Build the HTTP response
-            $response->getBody()->write((string)json_encode(['error' => 'Missing all required fields', 'Missing fields' => array_values($result)]));
+            $response->getBody()->write((string)json_encode(['error' => 'Missing required fields', 'Missing fields' => array_values($result)]));
 
             return $response
                 ->withHeader('Content-Type', 'application/json')
@@ -48,12 +53,12 @@ final class PlaceCreateAction
             }
 
             // Invoke the Domain with inputs and retain the result
-            $status = $this->placeService->createPlace($data);
+            $status = $this->placeService->editPlace($data);
 
             // Transform the result into the JSON representation
             if($status == 1){
                 $result = [
-                    'result' => 'A place is Successful added'
+                    'result' => 'A place is Successful updated'
                 ];
             }else{
                 $result = [

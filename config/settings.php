@@ -14,6 +14,22 @@ $settings = [];
 $settings['root'] = dirname(__DIR__);
 $settings['public'] = $settings['root'] . '/public';
 
+// Auth settings
+$settings['api_auth'] = [
+    'users' => [
+       'admin' => '$2y$10$IwXJYzXsyRdtgCbEBeEgteJYNx5lIGj2T.5PqFyN60y7WmaHR1/Ui'
+   ],
+   'error' => function ($response, $arguments) {
+        $data = [];
+        $data['status'] = 'error';
+        $data['message'] = $arguments['message'];
+
+        $response->getBody()->write(json_encode($data, JSON_UNESCAPED_SLASHES));
+
+        return $response->withHeader('Content-Type', 'application/json')->withStatus(403);
+    }
+];
+
 // Error Handling Middleware settings
 $settings['error'] = [
 

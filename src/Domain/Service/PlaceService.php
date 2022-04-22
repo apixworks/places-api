@@ -41,4 +41,34 @@ final class PlaceService
         return $result;
     }
 
+
+    /**
+     * Edit a new place.
+     *
+     * @param array $data The form data
+     *
+     * @return int The updated place status after editing
+     */
+    public function editPlace(array $data): int
+    {
+        // Call Edit place function in PlaceRepository
+        $result = $this->repository->updatePlace($data);
+
+        return $result;
+    }
+
+
+    /**
+     * Get all places.
+     *
+     * @return array All places filtered by names
+     */
+    public function viewAllPlaces(): array
+    {
+        // Call get all places function in PlaceRepository
+        $result = $this->repository->getAllPlaces();
+
+        return $result;
+    }
+
 }

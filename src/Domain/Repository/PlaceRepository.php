@@ -80,4 +80,78 @@ class PlaceRepository
         return $data->rowCount();
     }
 
+
+    /**
+     * Update a place in the database.
+     *
+     * @param array $place The place
+     *
+     * @return string status of the insert
+     */
+    public function updatePlace(array $place)
+    {
+        $instance = PlaceRepository::getInstance();
+        $database = $instance->getConnection();
+        $data = $database->update("tbl_places", [
+            "id" => $place['id'],
+            "name" => $place['name'],
+            "slug" => $place['slug'],
+            "city" => $place['city'],
+            "state" => $place['state'],
+            "image" => $place['image'],
+            "updated_at" => date('Y-m-d H:i:s'),
+        ],[
+            "id" => $place['id']
+        ]);
+        return $data->rowCount();
+    }
+
+
+    /**
+     * Get a specific place in the database.
+     *
+     * @param int $place The place
+     *
+     * @return object place details
+     */
+    public function getPlace(int $place_id)
+    {
+        $instance = PlaceRepository::getInstance();
+        $database = $instance->getConnection();
+        $data = $database->select("tbl_places", [
+            "id",
+            "name",
+            "slug",
+            "city",
+            "state",
+            "image",
+        ],[
+            "id" => $place_id
+        ]);
+        return $data->rowCount();
+    }
+
+
+    /**
+     * Get all places in the database.
+     *
+     * @return array place details
+     */
+    public function getAllPlaces()
+    {
+        $instance = PlaceRepository::getInstance();
+        $database = $instance->getConnection();
+        $data = $database->select("tbl_places", [
+            "id",
+            "name",
+            "slug",
+            "city",
+            "state",
+            "image",
+        ],[
+            "ORDER" => "name"
+        ]);
+        return $data;
+    }
+
 }

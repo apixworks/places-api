@@ -5,9 +5,7 @@ use Slim\App;
 use Slim\Factory\AppFactory;
 use Slim\Middleware\ErrorMiddleware;
 use Selective\BasePath\BasePathMiddleware;
-
-// Using Medoo namespace.
-use Medoo\Medoo;
+use Tuupola\Middleware\HttpBasicAuthentication;
 
 return [
     'settings' => function () {
@@ -33,5 +31,9 @@ return [
 
     BasePathMiddleware::class => function (ContainerInterface $container) {
         return new BasePathMiddleware($container->get(App::class));
+    },
+
+    HttpBasicAuthentication::class => function (ContainerInterface $container) {
+        return new HttpBasicAuthentication($container->get('settings')['api_auth']);
     },
 ];

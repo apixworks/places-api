@@ -3,6 +3,7 @@
 use Selective\BasePath\BasePathMiddleware;
 use Slim\App;
 use Slim\Middleware\ErrorMiddleware;
+use Tuupola\Middleware\HttpBasicAuthentication;
 
 return function (App $app) {
     // Parse json, form data and xml
@@ -15,4 +16,7 @@ return function (App $app) {
 
     // Catch exceptions and errors
     $app->add(ErrorMiddleware::class);
+
+    // Protect all routes
+    $app->add(HttpBasicAuthentication::class);
 };
