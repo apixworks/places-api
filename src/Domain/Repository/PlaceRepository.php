@@ -86,7 +86,7 @@ class PlaceRepository
      *
      * @param array $place The place
      *
-     * @return string status of the insert
+     * @return int status of the insert
      */
     public function updatePlace(array $place)
     {
@@ -118,7 +118,7 @@ class PlaceRepository
     {
         $instance = PlaceRepository::getInstance();
         $database = $instance->getConnection();
-        $data = $database->select("tbl_places", [
+        $data = $database->get("tbl_places", [
             "id",
             "name",
             "slug",
@@ -128,7 +128,7 @@ class PlaceRepository
         ],[
             "id" => $place_id
         ]);
-        return $data->rowCount();
+        return $data;
     }
 
 
@@ -152,6 +152,28 @@ class PlaceRepository
             "ORDER" => "name"
         ]);
         return $data;
+    }
+
+
+    /**
+     * Update image of place in the database.
+     *
+     * @param array $data The place
+     *
+     * @return int status of the updation
+     */
+    public function updateImage(array $data)
+    {
+        $instance = PlaceRepository::getInstance();
+        $database = $instance->getConnection();
+        $result = $database->update("tbl_places", [
+            "id" => $data['id'],
+            "image" => $data['image'],
+            "updated_at" => date('Y-m-d H:i:s'),
+        ],[
+            "id" => $data['id']
+        ]);
+        return $result->rowCount();
     }
 
 }

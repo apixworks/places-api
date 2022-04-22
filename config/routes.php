@@ -12,4 +12,10 @@ return function (App $app) {
 
     // Get all places endpoint
     $app->get('/places-api/places', \App\Action\PlacesGetAction::class);
+
+    // Get place endpoint
+    $app->get('/places-api/places/{id}', \App\Action\PlaceGetAction::class);
+
+    // Upload image endpoint
+    $app->post('/places-api/upload_image', \App\Action\PlaceImageUploadAction::class);
 };

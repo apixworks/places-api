@@ -59,6 +59,22 @@ final class PlaceService
 
 
     /**
+     * view a place.
+     *
+     * @param int $place_id The place id
+     *
+     * @return array Get a place
+     */
+    public function viewPlace(int $place_id): array
+    {
+        // Call get place function in PlaceRepository
+        $result = $this->repository->getPlace($place_id);
+
+        return $result;
+    }
+
+
+    /**
      * Get all places.
      *
      * @return array All places filtered by names
@@ -67,6 +83,22 @@ final class PlaceService
     {
         // Call get all places function in PlaceRepository
         $result = $this->repository->getAllPlaces();
+
+        return $result;
+    }
+
+
+    /**
+     * Upload image of a new place.
+     *
+     * @param array $data The form data
+     *
+     * @return int The updated image status after uploading
+     */
+    public function uploadImage(array $data): int
+    {
+        // Call update image function in PlaceRepository
+        $result = $this->repository->updateImage($data);
 
         return $result;
     }
