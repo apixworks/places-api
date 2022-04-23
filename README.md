@@ -16,4 +16,4 @@ A PHP api created by Slim framework for managing places.
     └── README.md
 
 
-Read the API documentation here | :point_right: | [link](https://asyx-places-api.herokuapp.com/places-api/docs/v1).
+#### Read the API documentation here :point_right: [link](https://asyx-places-api.herokuapp.com/places-api/docs/v1).
