@@ -38,7 +38,7 @@ final class PlaceGetAction
 
         // Transform the result into the JSON representation
         $place = [
-            'place' => $result
+            'place' => $place
         ];
 
         // Build the HTTP response
