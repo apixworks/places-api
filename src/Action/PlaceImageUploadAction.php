@@ -53,7 +53,7 @@ final class PlaceImageUploadAction
             if ($newfile->getError() === UPLOAD_ERR_OK) {
                 $uploadFileName = $newfile->getClientFilename();
                 $img_name = strval(time()).".".explode(".",$uploadFileName)[1];
-                $newfile->moveTo($directory . DIRECTORY_SEPARATOR . $img_name);
+                // $newfile->moveTo($directory . DIRECTORY_SEPARATOR . $img_name);
                 $data['image'] = $img_name;
             }
 
