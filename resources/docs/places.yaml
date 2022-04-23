@@ -13,7 +13,7 @@ info:
     name: Proprietary License
     url: 'https://en.wikipedia.org/wiki/Proprietary_software'
 servers:
-  - url: 'http://localhost:8080/places-api/'
+  - url: 'https://asyx-places-api.herokuapp.com/places-api/'
     description: Test
 tags:
   - name: Place
