@@ -32,15 +32,17 @@ final class PlaceGetAction
         $placeId = $route->getArgument('id');
 
         // Invoke the Domain to get the result
-        $result = $this->placeService->viewPlace($placeId);
+        $place = $this->placeService->viewPlace($placeId);
+
+        $place['image'] = 'https://asyx-places-api.herokuapp.com/places-api/view/image/'.$image_name;
 
         // Transform the result into the JSON representation
-        $result = [
+        $place = [
             'place' => $result
         ];
 
         // Build the HTTP response
-        $response->getBody()->write((string)json_encode($result));
+        $response->getBody()->write((string)json_encode($place));
 
         return $response
             ->withHeader('Content-Type', 'application/json')

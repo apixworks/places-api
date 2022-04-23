@@ -30,7 +30,7 @@ final class PlacesGetAction
 
         foreach($places as &$place){
             $image_name = explode('.',$place['image'])[0];
-            $place['image'] = 'http://localhost:8080/places-api/view/image/'.$image_name;
+            $place['image'] = 'https://asyx-places-api.herokuapp.com/places-api/view/image/'.$image_name;
         }
 
         // Transform the result into the JSON representation
