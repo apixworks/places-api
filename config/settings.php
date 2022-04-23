@@ -17,7 +17,7 @@ $settings['template'] = $settings['root'] . '/templates';
 
 // Auth settings
 $settings['api_auth'] = [
-    'path' => '/places-api',
+    // 'path' => '/places-api',
     'secure' => 'true',
     'relaxed' => ["asyx-places-api.herokuapp.com, remotemysql.com"],
     'users' => [
