@@ -34,7 +34,7 @@ final class PlaceGetAction
         // Invoke the Domain to get the result
         $place = $this->placeService->viewPlace($placeId);
 
-        $place['image'] = 'https://asyx-places-api.herokuapp.com/places-api/view/image/'.$image_name;
+        $place['image'] = 'https://asyx-places-api.herokuapp.com/places-api/view/image/'.$place['image'];
 
         // Transform the result into the JSON representation
         $place = [

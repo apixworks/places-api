@@ -29,8 +29,7 @@ final class PlacesGetAction
         $places = $this->placeService->viewAllPlaces();
 
         foreach($places as &$place){
-            $image_name = explode('.',$place['image'])[0];
-            $place['image'] = 'https://asyx-places-api.herokuapp.com/places-api/view/image/'.$image_name;
+            $place['image'] = 'https://asyx-places-api.herokuapp.com/places-api/view/image/'.$place['image'];
         }
 
         // Transform the result into the JSON representation
