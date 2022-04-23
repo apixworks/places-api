@@ -1,0 +1,360 @@
+openapi: 3.0.2
+info:
+  version: 1.0.0
+  title: Places API
+  contact:
+    name: Asyx
+    url: 'https://asyx.co.tz'
+    email: fred.apina@gmail.com
+  description: |-
+    This is API documentation based on the OpenAPI 3.0 specification. You can find out more about
+    Swagger at [https://swagger.io](https://swagger.io).
+  license:
+    name: Proprietary License
+    url: 'https://en.wikipedia.org/wiki/Proprietary_software'
+servers:
+  - url: 'http://localhost:8080/places-api/'
+    description: Test
+tags:
+  - name: Place
+security:
+  - BasicAuth: []
+paths:
+  '/places':
+    get:
+      tags:
+        - Place
+      summary: List places
+      description: 'My description.'
+      operationId: getPlaces
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Places'
+        '400':
+          $ref: '#/components/responses/400'
+        '403':
+          $ref: '#/components/responses/403'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  '/create':
+    post:
+      tags:
+        - Place
+      summary: Create place
+      description: 'My description.'
+      operationId: createPlace
+      requestBody:
+        description: Values sent in request body
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PlaceRequest'
+      responses:
+        '201':
+          description: Place Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: string
+                    example: 'A place is Successful added'
+        '400':
+          $ref: '#/components/responses/400'
+        '403':
+          $ref: '#/components/responses/403'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  '/places/{id}':
+    get:
+      tags:
+        - Place
+      summary: Get place
+      description: 'My description.'
+      operationId: getPlaceById
+      parameters:
+        - name: id
+          in: path
+          description: 'The ID that needs to be fetched. Use 1 for testing.'
+          required: true
+          schema:
+            type: int
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Place'
+        '400':
+          $ref: '#/components/responses/400'
+        '403':
+          $ref: '#/components/responses/403'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  '/edit':
+    post:
+      tags:
+        - Place
+      summary: Update place
+      description: 'My description.'
+      operationId: updatePlace
+      requestBody:
+        description: Update an existent place
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PlaceRequest'
+      responses:
+        '201':
+          description: Place Edited
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: string
+                    example: 'A place is Successful updated'
+        '400':
+          $ref: '#/components/responses/400'
+        '403':
+          $ref: '#/components/responses/403'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+  '/upload_image':
+    post:
+      tags:
+        - Place
+      summary: Upload image
+      description: 'My description.'
+      operationId: UploadImage
+      requestBody:
+        description: Update an existent place
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UploadImageRequest'
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '403':
+          $ref: '#/components/responses/403'
+        '422':
+          $ref: '#/components/responses/422'
+        '500':
+          $ref: '#/components/responses/500'
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+  responses:
+    '200':
+      description: OK.
+      content:
+        application/json: {}
+    '201':
+      description: Created.
+      content:
+        application/json: {}
+    '204':
+      description: Successfully processed.
+      content:
+        application/json: {}
+    '400':
+      description: Bad request.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              message: Your request does not seem to be valid.
+    '401':
+      description: Authorization information is missing or invalid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              message: Authorization information is missing or invalid.
+    '403':
+      description: Forbidden.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              message: Forbidden. You are not allowed to access this location.
+    '404':
+      description: Not Found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              message: Not Found.
+    '405':
+      description: Method not allowed.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              message: Request Method not allowed.
+    '406':
+      description: Not acceptable.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              message: The requested format is not supported.
+    '415':
+      description: Unsupported Media Type.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              message: The media type is not supported.
+    '422':
+      description: Unprocessable Entity.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              message: Input validation failed
+    '500':
+      description: Unexpected error.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              message: Unexpected internal Server Error.
+    '503':
+      description: 'Service Unavailable, e.g. Maintenance.'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error:
+              message: Service Unavailable.
+  schemas:
+    Place:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 10
+        name:
+          type: string
+          example: Serena Hotel
+        slug:
+          type: string
+          example: SH
+        city:
+          type: string
+          example: Dodoma CBD
+        state:
+          type: string
+          example: Dodoma
+        image:
+          type: string
+          example: 'http://localhost:8080/places-api/view/image/1650621687'
+        created_at:
+          type: integer
+          format: DateTime
+          example: '2022-04-22 13:01:27'
+        updated_at:
+          type: DateTime
+          example: '2022-04-22 13:01:27'
+    Places:
+      required:
+        - places
+      properties:
+        places:
+          type: array
+          description: List of places
+          items:
+            $ref: '#/components/schemas/Place'
+    PlaceRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Serena Hotel
+        slug:
+          type: string
+          example: SH
+        city:
+          type: string
+          example: Dodoma CBD
+        state:
+          type: string
+          example: Dodoma
+        image:
+          type: string
+          format: binary
+    UploadImageRequest:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 5
+        image:
+          type: string
+          format: binary
+    Error:
+      required:
+        - error
+      properties:
+        error:
+          type: object
+          required:
+            - message
+          properties:
+            message:
+              type: string
+              description: The error message
+            details:
+              type: array
+              items:
+                $ref: '#/components/schemas/ErrorDetails'
+              description: The error details (e.g. validation errors)
+
+    ErrorDetails:
+      properties:
+        field:
+          type: string
+          description: The name of the invalid field
+        message:
+          type: string
+          description: The error message

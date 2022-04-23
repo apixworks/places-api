@@ -125,6 +125,8 @@ class PlaceRepository
             "city",
             "state",
             "image",
+            "created_at",
+            "updated_at"
         ],[
             "id" => $place_id
         ]);
@@ -148,6 +150,8 @@ class PlaceRepository
             "city",
             "state",
             "image",
+            "created_at",
+            "updated_at"
         ],[
             "ORDER" => "name"
         ]);

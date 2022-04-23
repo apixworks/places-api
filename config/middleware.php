@@ -18,5 +18,5 @@ return function (App $app) {
     $app->add(ErrorMiddleware::class);
 
     // Protect all routes
-    $app->add(HttpBasicAuthentication::class);
+    // $app->add(HttpBasicAuthentication::class);
 };

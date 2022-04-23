@@ -71,7 +71,7 @@ final class PlaceEditAction
 
             return $response
                 ->withHeader('Content-Type', 'application/json')
-                ->withStatus(200);
+                ->withStatus(201);
         }
     }
 }

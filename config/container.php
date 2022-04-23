@@ -6,6 +6,7 @@ use Slim\Factory\AppFactory;
 use Slim\Middleware\ErrorMiddleware;
 use Selective\BasePath\BasePathMiddleware;
 use Tuupola\Middleware\HttpBasicAuthentication;
+use Slim\Views\PhpRenderer;
 
 return [
     'settings' => function () {
@@ -35,5 +36,9 @@ return [
 
     HttpBasicAuthentication::class => function (ContainerInterface $container) {
         return new HttpBasicAuthentication($container->get('settings')['api_auth']);
+    },
+
+    PhpRenderer::class => function (ContainerInterface $container) {
+        return new PhpRenderer($container->get('settings')['template']);
     },
 ];
