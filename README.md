@@ -1,7 +1,7 @@
 # places-api
 A PHP api created by Slim framework for managing places.
 
-### The API top-level directory layout
+#### The API top-level directory layout
 
     .
     ├── config/                 # Configuration files
@@ -14,3 +14,7 @@ A PHP api created by Slim framework for managing places.
     ├── .gitignore              # Git ignore rules
     ├── composer.json           # Project dependencies and autoloader
     └── README.md
+
+#### API Documentation
+
+Read the API documentation here [link](https://asyx-places-api.herokuapp.com/places-api/places-api/docs/v1).
