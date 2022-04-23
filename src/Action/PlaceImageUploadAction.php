@@ -6,7 +6,7 @@ use App\Domain\Service\PlaceService;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-final class PlaceEditAction
+final class PlaceImageUploadAction
 {
     // Reference image saving path
     private $directory = __DIR__ . '/../../public/images';
@@ -29,8 +29,17 @@ final class PlaceEditAction
         // Collect input from the HTTP request
         $data = (array)$request->getParsedBody();
 
+        // Get uploaded image
+        $uploadedFiles = $request->getUploadedFiles();
+
+        // Get uploaded image
+        $newfile = $uploadedFiles['image'];
+        if ($newfile){
+            $data['image'] = '';
+        }
+
         //Ensuring all required fields are filled
-        $result = array_diff(['id','name','slug','city','state'], array_keys($data));
+        $result = array_diff(['id','image'], array_keys($data));
         if (count($result) > 0) {
             // Build the HTTP response
             $response->getBody()->write((string)json_encode(['error' => 'Missing required fields', 'Missing fields' => array_values($result)]));
@@ -40,12 +49,8 @@ final class PlaceEditAction
                 ->withStatus(400);
         }else{
 
-            // Get uploaded image
-            $uploadedFiles = $request->getUploadedFiles();
-
             // Rename and store uploaded image
-            $newfile = $uploadedFiles['image'];
-            if ($newfile && $newfile->getError() === UPLOAD_ERR_OK) {
+            if ($newfile->getError() === UPLOAD_ERR_OK) {
                 $uploadFileName = $newfile->getClientFilename();
                 $img_name = strval(time()).".".explode(".",$uploadFileName)[1];
                 $newfile->moveTo($directory . DIRECTORY_SEPARATOR . $img_name);
@@ -53,12 +58,12 @@ final class PlaceEditAction
             }
 
             // Invoke the Domain with inputs and retain the result
-            $status = $this->placeService->editPlace($data);
+            $status = $this->placeService->uploadImage($data);
 
             // Transform the result into the JSON representation
             if($status == 1){
                 $result = [
-                    'result' => 'A place is Successful updated'
+                    'result' => 'Image has successful been uploaded'
                 ];
             }else{
                 $result = [
@@ -71,7 +76,7 @@ final class PlaceEditAction
 
             return $response
                 ->withHeader('Content-Type', 'application/json')
-                ->withStatus(201);
+                ->withStatus(200);
         }
     }
 }

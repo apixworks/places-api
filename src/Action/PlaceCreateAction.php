@@ -14,6 +14,11 @@ final class PlaceCreateAction
     private $placeService;
 
 
+    /**
+     * The constructor.
+     *
+     * @param PlaceService $placeService The Service
+     */
     public function __construct(PlaceService $placeService)
     {
         $this->placeService = $placeService;
@@ -28,7 +33,7 @@ final class PlaceCreateAction
         $result = array_diff(['name','slug','city','state'], array_keys($data));
         if (count($result) > 0) {
             // Build the HTTP response
-            $response->getBody()->write((string)json_encode(['error' => 'Missing all required fields', 'Missing fields' => array_values($result)]));
+            $response->getBody()->write((string)json_encode(['error' => 'Missing required fields', 'Missing fields' => array_values($result)]));
 
             return $response
                 ->withHeader('Content-Type', 'application/json')
@@ -66,7 +71,7 @@ final class PlaceCreateAction
 
             return $response
                 ->withHeader('Content-Type', 'application/json')
-                ->withStatus(200);
+                ->withStatus(201);
         }
     }
 }
