@@ -34,8 +34,8 @@ class PlaceRepository
             'type' => 'mysql',
             'host' => getenv("REMOTEMYSQL_HOST"),
             'database' => getenv("REMOTEMYSQL_DATABASE"),
-            'username' => getenv("REMOTEMYSQL_PASSWORD"),
-            'password' => getenv("REMOTEMYSQL_USERNAME")
+            'username' => getenv("REMOTEMYSQL_USERNAME"),
+            'password' => getenv("REMOTEMYSQL_PASSWORD")
         ]);
     }
 
