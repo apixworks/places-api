@@ -17,9 +17,9 @@ $settings['template'] = $settings['root'] . '/templates';
 
 // Auth settings
 $settings['api_auth'] = [
-    // 'path' => '/places-api',
-    // 'ignore' => ["/places-api/docs/v1"],
-    // 'realm' => 'Protected',
+    'path' => '/places-api',
+    'secure' => 'true',
+    'relaxed' => ["asyx-places-api.herokuapp.com, remotemysql.com"],
     'users' => [
        'admin' => '$2y$10$IwXJYzXsyRdtgCbEBeEgteJYNx5lIGj2T.5PqFyN60y7WmaHR1/Ui'
    ],
