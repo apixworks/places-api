@@ -27,6 +27,9 @@ return function (App $app) {
         }
     )->add(HttpBasicAuthentication::class);
 
+    // Welcome endpoint
+    $app->get('/', \App\Action\WelcomeAction::class);
+
     // Swagger API documentation
     $app->get('/places-api/docs/v1', \App\Action\Docs\SwaggerUiAction::class);
 
