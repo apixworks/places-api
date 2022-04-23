@@ -17,3 +17,7 @@ A PHP api created by Slim framework for managing places.
 
 
 #### Read the API documentation here :point_right: [link](https://asyx-places-api.herokuapp.com/places-api/docs/v1).
+
+
+#### Security and using the API
+    The endpoints are secured hence to access them you have use the `:Basic Auth :` Authorization
