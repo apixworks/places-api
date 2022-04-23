@@ -21,5 +21,5 @@ A PHP api created by Slim framework for managing places.
 
 #### Security and using the API
     The endpoints are secured hence to access them you have use the `:Basic Auth:` Authorization
-    ![Alt text](https://github.com/apixworks/places-api/blob/main/screenshots/security.png?raw=true?raw=true "Basic Auth")
+   ![Alt text](https://github.com/apixworks/places-api/blob/main/screenshots/security.png?raw=true?raw=true "Basic Auth")
     
