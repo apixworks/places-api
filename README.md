@@ -15,4 +15,5 @@ A PHP api created by Slim framework for managing places.
     ├── composer.json           # Project dependencies and autoloader
     └── README.md
 
-Read the API documentation here [link](https://asyx-places-api.herokuapp.com/places-api/docs/v1).
+
+Read the API documentation here | :kissing_heart: `:kissing_heart:` | [link](https://asyx-places-api.herokuapp.com/places-api/docs/v1).
