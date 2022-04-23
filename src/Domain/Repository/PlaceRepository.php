@@ -32,10 +32,10 @@ class PlaceRepository
     {
         $this->db = new Medoo([
             'type' => 'mysql',
-            'host' => '127.0.0.1',
-            'database' => 'places_db',
-            'username' => 'root',
-            'password' => ''
+            'host' => getenv("REMOTEMYSQL_DATABASE"),
+            'database' => getenv("REMOTEMYSQL_HOST"),
+            'username' => getenv("REMOTEMYSQL_PASSWORD"),
+            'password' => getenv("REMOTEMYSQL_USERNAME")
         ]);
     }
 
