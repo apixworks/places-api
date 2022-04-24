@@ -1,6 +1,13 @@
 # places-api
 A PHP api created by Slim framework for managing places.
 
+#### Tools and Technologies used
+    - Porgramming language - PHP
+    - API framework - Slim
+    - Database - MySQL
+    - Documentation - Swagger
+    - Testing enviroment - Heroku
+
 #### The API top-level directory layout
 
     .
@@ -10,6 +17,7 @@ A PHP api created by Slim framework for managing places.
     ├── src                     # PHP source code (The App namespace)
     ├── vendor/                 # Reserved for composer
     ├── resources/              # Documentation reference files
+    ├── screenshots/            # Postman screenshots on using the API
     ├── .htaccess               # Internal redirect to the public/ directory
     ├── .gitignore              # Git ignore rules
     ├── composer.json           # Project dependencies and autoloader
@@ -20,4 +28,22 @@ A PHP api created by Slim framework for managing places.
 
 
 #### Security and using the API
-    The endpoints are secured hence to access them you have use the `:Basic Auth :` Authorization
+    The endpoints are secured hence to access them you have use the `:Basic Auth:` Authorization
+   ![Alt text](https://github.com/apixworks/places-api/blob/main/screenshots/security.png?raw=true?raw=true "Basic Auth")
+   
+##### How to run the Create place endpoint
+   ![Alt text](https://github.com/apixworks/places-api/blob/main/screenshots/create_place.png?raw=true?raw=true?raw=true "Basic Auth")
+   
+##### How to run the Edit place endpoint
+   ![Alt text](https://github.com/apixworks/places-api/blob/main/screenshots/edit_place.png?raw=true?raw=true?raw=true "Basic Auth")
+   
+##### How to run the get places endpoint
+   ![Alt text](https://github.com/apixworks/places-api/blob/main/screenshots/get_places.png?raw=true?raw=true?raw=true "Basic Auth")
+   
+##### How to run the get a place endpoint
+   ![Alt text](https://github.com/apixworks/places-api/blob/main/screenshots/get_place.png?raw=true?raw=true?raw=true "Basic Auth")
+   
+   
+##### How to run the uploading an image endpoint
+   ![Alt text](https://github.com/apixworks/places-api/blob/main/screenshots/upload_image.png?raw=true?raw=true?raw=true "Basic Auth")
+    
