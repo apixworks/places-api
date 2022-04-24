@@ -25,4 +25,17 @@ A PHP api created by Slim framework for managing places.
    
 ##### How to run the Create place endpoint
    ![Alt text](https://github.com/apixworks/places-api/blob/main/screenshots/create_place.png?raw=true?raw=true?raw=true "Basic Auth")
+   
+##### How to run the Edit place endpoint
+   ![Alt text](https://github.com/apixworks/places-api/blob/main/screenshots/edit_place.png?raw=true?raw=true?raw=true "Basic Auth")
+   
+##### How to run the get places endpoint
+   ![Alt text](https://github.com/apixworks/places-api/blob/main/screenshots/get_places.png?raw=true?raw=true?raw=true "Basic Auth")
+   
+##### How to run the get a place endpoint
+   ![Alt text](https://github.com/apixworks/places-api/blob/main/screenshots/get_place.png?raw=true?raw=true?raw=true "Basic Auth")
+   
+   
+##### How to run the uploading an image endpoint
+   ![Alt text](https://github.com/apixworks/places-api/blob/main/screenshots/upload_image.png?raw=true?raw=true?raw=true "Basic Auth")
     
