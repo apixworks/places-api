@@ -1,6 +1,13 @@
 # places-api
 A PHP api created by Slim framework for managing places.
 
+#### Tools and Technologies used
+    - Porgramming language - PHP
+    - API framework - Slim
+    - Database - MySQL
+    - Documentation - Swagger
+    - Testing enviroment - Heroku
+
 #### The API top-level directory layout
 
     .
@@ -10,6 +17,7 @@ A PHP api created by Slim framework for managing places.
     ├── src                     # PHP source code (The App namespace)
     ├── vendor/                 # Reserved for composer
     ├── resources/              # Documentation reference files
+    ├── screenshots/            # Postman screenshots on using the API
     ├── .htaccess               # Internal redirect to the public/ directory
     ├── .gitignore              # Git ignore rules
     ├── composer.json           # Project dependencies and autoloader
